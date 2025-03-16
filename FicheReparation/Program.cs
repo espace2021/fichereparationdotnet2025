@@ -1,6 +1,9 @@
 using FicheReparation.Data;
 using FicheReparation.Entity;
 using Microsoft.EntityFrameworkCore;
+using DinkToPdf;
+using DinkToPdf.Contracts;
+using FicheReparation.Helpers;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -10,6 +13,11 @@ builder.Services.AddScoped<IClientRepository, ClientRepository>();
 
 //DemandeReparation
 builder.Services.AddScoped<IDemandeReparationRepository, DemandeReparationRepository>();
+
+// Configuration de DinkToPdf.
+builder.Services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
+builder.Services.AddSingleton<PdfService>();
+
 
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));

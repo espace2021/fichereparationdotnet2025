@@ -1,7 +1,8 @@
 ﻿using FicheReparation.Entity;
+using FicheReparation.Helpers;
 using FicheReparation.Models;
 using Microsoft.AspNetCore.Mvc;
-
+using Microsoft.AspNetCore.Mvc.Abstractions;
 
 namespace FicheReparation.Controllers
 {
@@ -9,12 +10,16 @@ namespace FicheReparation.Controllers
     {
         private readonly IDemandeReparationRepository _demandeReparationRepository;
         private readonly IClientRepository _clientRepository; // Ajout d'une référence à un repository pour les clients
+        private readonly PdfService _pdfService; //pdf
+       
 
+        public ActionDescriptor ActionDescriptor { get; internal set; }
 
-        public DemandeReparationController(IDemandeReparationRepository demandeReparationRepository, IClientRepository clientRepository)
+        public DemandeReparationController(IDemandeReparationRepository demandeReparationRepository, IClientRepository clientRepository, PdfService pdfService)
         {
             _demandeReparationRepository = demandeReparationRepository;
             _clientRepository = clientRepository;
+            _pdfService = pdfService;
         }
 
     
@@ -46,18 +51,49 @@ namespace FicheReparation.Controllers
             return View();
         }
 
-        // POST: DemandeReparation/Create
+        public ControllerContext GetControllerContext()
+        {
+            return ControllerContext;
+        }
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("DateDepotAppareil,Appareil,Etat,SymptomesPanne,ClientId")] DemandeReparation demandeReparation)
         {
             if (ModelState.IsValid)
             {
+                // Récupération des informations du client
+                var client = await _clientRepository.GetClientByIdAsync(demandeReparation.ClientId);
+                if (client == null)
+                {
+                    ModelState.AddModelError("ClientId", "Client non trouvé.");
+                    ViewData["Clients"] = await _clientRepository.GetAllClientsAsync();
+                    return View(demandeReparation);
+                }
+
+                // Associer le nom du client à la demande de réparation
+                demandeReparation.Client = client;
+
+                // Sauvegarde de la demande de réparation
                 await _demandeReparationRepository.AddAsync(demandeReparation);
-                return RedirectToAction("Index", "DemandeReparation");
+
+                // Génération du PDF avec la vue "IndexPdf" et le modèle contenant le client
+                var pdfBytes = _pdfService.GeneratePdfFromView("IndexPdf", demandeReparation, ControllerContext);
+
+                // Retour du fichier PDF avec le nom du client dans le nom du fichier
+                string fileName = $"DemandeReparation_{client.Nom}.pdf";
+                return File(pdfBytes, "application/pdf", fileName);
             }
+
+            // En cas d'erreur, recharger la liste des clients
+            ViewData["Clients"] = await _clientRepository.GetAllClientsAsync();
             return View(demandeReparation);
         }
+
+
+
+
+
 
         // GET: DemandeReparation/Edit/5
         public async Task<IActionResult> Edit(int id)
@@ -115,4 +151,5 @@ namespace FicheReparation.Controllers
             return View(demandes);
         }
     }
+
 }

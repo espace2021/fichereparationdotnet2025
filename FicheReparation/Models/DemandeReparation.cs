@@ -30,7 +30,8 @@ namespace FicheReparation.Models
 
         [ForeignKey("ClientId")]
         public Client? Client { get; set; }
-    }
+
+        }
 
 }
 
