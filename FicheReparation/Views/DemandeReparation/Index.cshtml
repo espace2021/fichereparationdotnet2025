@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FicheReparation.Models.DemandeReparation>
+
+@{
+    ViewData["Title"] = "Liste des demandes de réparation";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<a href="@Url.Action("Create", "DemandeReparation")" class="btn btn-primary mb-3">Ajouter une nouvelle demande</a>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>@Html.DisplayNameFor(model => model.DateDepotAppareil)</th>
+            <th>@Html.DisplayNameFor(model => model.Appareil)</th>
+            <th>@Html.DisplayNameFor(model => model.Etat)</th>
+            <th>@Html.DisplayNameFor(model => model.SymptomesPanne)</th>
+            <th>@Html.DisplayNameFor(model => model.Client)</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.DateDepotAppareil.ToString("d")</td>
+                <td>@item.Appareil</td>
+                <td>@item.Etat</td>
+                <td>@item.SymptomesPanne</td>
+                <td>@item.Client?.Nom</td>
+                <td>
+                    <a href="@Url.Action("Edit", "DemandeReparation", new { id = item.Id })" class="btn btn-warning btn-sm">Modifier</a>
+                    <a href="@Url.Action("Details", "DemandeReparation", new { id = item.Id })" class="btn btn-info btn-sm">Voir</a>
+                    <a href="@Url.Action("Delete", "DemandeReparation", new { id = item.Id })" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

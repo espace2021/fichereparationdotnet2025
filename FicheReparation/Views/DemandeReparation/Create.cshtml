@@ -1,0 +1,67 @@
+﻿@model FicheReparation.Models.DemandeReparation
+
+@{
+    ViewData["Title"] = "Nouvelle Demande de réparation";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr>
+
+<!-- Formulaire de création d'une demande de réparation -->
+<form asp-action="Create" method="post">
+    <div class="form-group">
+        <label for="DateDepotAppareil">Date de dépôt de l'appareil</label>
+        <input type="date" asp-for="DateDepotAppareil" class="form-control" />
+        <span asp-validation-for="DateDepotAppareil" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Appareil">Appareil</label>
+        <input type="text" asp-for="Appareil" class="form-control" maxlength="100" />
+        <span asp-validation-for="Appareil" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="Etat">État de l'appareil</label>
+        <input type="text" asp-for="Etat" class="form-control" maxlength="50" readonly value="Arrivé"/>
+    </div>
+
+    <div class="form-group">
+        <label for="SymptomesPanne">Symptômes de la panne</label>
+        <textarea asp-for="SymptomesPanne" class="form-control" maxlength="255"></textarea>
+        <span asp-validation-for="SymptomesPanne" class="text-danger"></span>
+    </div>
+
+    <div class="form-group">
+        <label for="ClientId">Client</label>
+        <select asp-for="ClientId" class="form-control">
+            <option value="">- Choisir Client -</option>
+            <!-- Remplir avec les clients disponibles -->
+           @{
+                var clients = ViewData["Clients"] as List<FicheReparation.Models.Client>;
+            }
+
+            @if (clients != null)
+            {
+        @foreach (var client in clients)
+        {
+            <option value="@client.Id">@client.Nom</option>
+        }
+}
+else
+{
+    <option disabled>Aucun client disponible</option>
+}
+
+        </select>
+        <span asp-validation-for="ClientId" class="text-danger"></span>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Créer</button>
+</form>
+
+<!-- Validation client-side -->
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

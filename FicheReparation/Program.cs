@@ -8,6 +8,9 @@ var builder = WebApplication.CreateBuilder(args);
 //Client
 builder.Services.AddScoped<IClientRepository, ClientRepository>();
 
+//DemandeReparation
+builder.Services.AddScoped<IDemandeReparationRepository, DemandeReparationRepository>();
+
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

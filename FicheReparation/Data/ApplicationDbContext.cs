@@ -9,5 +9,6 @@ namespace FicheReparation.Data
             : base(options) { }
 
         public DbSet<Client> Clients { get; set; }
+        public DbSet<DemandeReparation> DemandeReparations { get; set; }
     }
 }
