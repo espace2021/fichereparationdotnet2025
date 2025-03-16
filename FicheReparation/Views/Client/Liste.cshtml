@@ -1,0 +1,39 @@
+﻿@model IEnumerable<FicheReparation.Models.Client>
+
+@{
+    ViewData["Title"] = "Liste des Clients";
+}
+
+<h2 class="text-center mt-3">Liste des Clients</h2>
+
+<p>
+    <a asp-action="Create" class="btn btn-primary">Ajouter un Client</a>
+</p>
+
+<table class="table table-striped">
+    <thead class="table-dark">
+        <tr>
+            <th>Nom</th>
+            <th>Adresse</th>
+            <th>Téléphone</th>
+            <th>Email</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var client in Model)
+        {
+            <tr>
+                <td>@client.Nom</td>
+                <td>@client.Adresse</td>
+                <td>@client.NumTel</td>
+                <td>@client.Email</td>
+                <td>
+                    <a asp-action="Details" asp-route-id="@client.Id" class="btn btn-info btn-sm">Détails</a>
+                    <a asp-action="Edit" asp-route-id="@client.Id" class="btn btn-warning btn-sm">Modifier</a>
+                    <a asp-action="Delete" asp-route-id="@client.Id" class="btn btn-danger btn-sm">Supprimer</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

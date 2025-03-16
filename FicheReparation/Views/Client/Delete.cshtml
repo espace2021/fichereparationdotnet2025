@@ -1,0 +1,28 @@
+﻿@model FicheReparation.Models.Client
+
+@{
+    ViewData["Title"] = "Supprimer le Client";
+}
+
+<h2 class="text-center mt-3 text-danger">Supprimer le Client</h2>
+
+<div class="card shadow-sm p-4">
+    <div class="card-body">
+        <h4 class="text-danger">Êtes-vous sûr de vouloir supprimer ce client ?</h4>
+        <hr />
+
+        <p><strong>Nom :</strong> @Model.Nom</p>
+        <p><strong>Adresse :</strong> @Model.Adresse</p>
+        <p><strong>Téléphone :</strong> @Model.NumTel</p>
+        <p><strong>Email :</strong> @Model.Email</p>
+
+        <form id="deleteForm" method="post" asp-action="Delete" asp-controller="Client">
+            <input type="hidden" asp-for="Id" />
+            
+            <div class="mt-4">
+                <button type="submit" class="btn btn-danger">Oui, Supprimer</button>
+                <a asp-action="Liste" class="btn btn-secondary">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>

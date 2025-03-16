@@ -1,0 +1,48 @@
+﻿@model FicheReparation.Models.Client
+
+@{
+    ViewData["Title"] = "Modifier le Client";
+}
+
+<h2 class="text-center mt-3">Modifier le Client</h2>
+
+<div class="card shadow-sm p-4">
+    <div class="card-body">
+        <form asp-action="Edit" method="post">
+            <input type="hidden" asp-for="Id" />
+
+            <div class="mb-3">
+                <label asp-for="Nom" class="form-label">Nom</label>
+                <input asp-for="Nom" class="form-control" />
+                <span asp-validation-for="Nom" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Adresse" class="form-label">Adresse</label>
+                <input asp-for="Adresse" class="form-control" />
+                <span asp-validation-for="Adresse" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="NumTel" class="form-label">Téléphone</label>
+                <input asp-for="NumTel" class="form-control" />
+                <span asp-validation-for="NumTel" class="text-danger"></span>
+            </div>
+
+            <div class="mb-3">
+                <label asp-for="Email" class="form-label">Email</label>
+                <input asp-for="Email" class="form-control" type="email" />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+
+            <div class="mt-4">
+                <button type="submit" class="btn btn-success">Enregistrer</button>
+                <a asp-action="Liste" class="btn btn-secondary">Annuler</a>
+            </div>
+        </form>
+    </div>
+</div>
+
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}
