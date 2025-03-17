@@ -125,21 +125,9 @@ namespace FicheReparation.Controllers
         }
 
 
-        // GET: DemandeReparation/Delete/5
-        public async Task<IActionResult> Delete(int id)
-        {
-            var demande = await _demandeReparationRepository.GetByIdAsync(id);
-            if (demande == null)
-            {
-                return NotFound();
-            }
-            return View(demande);
-        }
-
         // POST: DemandeReparation/Delete/5
         [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> Delete(int id)
         {
             await _demandeReparationRepository.DeleteAsync(id);
             return RedirectToAction(nameof(Index));

@@ -18,7 +18,7 @@
             <th>@Html.DisplayNameFor(model => model.Etat)</th>
             <th>@Html.DisplayNameFor(model => model.SymptomesPanne)</th>
             <th>@Html.DisplayNameFor(model => model.Client)</th>
-            <th style="width: 25%;">Actions</th> <!-- Élargi -->
+            <th style="width: 25%;">Actions</th> 
         </tr>
     </thead>
     <tbody>
@@ -30,16 +30,16 @@
                 <td class="etat-cell" data-etat="@item.Etat">@item.Etat</td>
                 <td>@item.SymptomesPanne</td>
                 <td>@item.Client?.Nom</td>
-                <td>
-                    <a href="@Url.Action("Edit", "DemandeReparation", new { id = item.Id })" class="btn btn-warning btn-sm">
+               <td style="white-space: nowrap;">
+                    <a href="@Url.Action("Edit", "DemandeReparation", new { id = item.Id })" class="btn btn-warning btn-sm" style="display: inline-block; margin-right: 5px;">
                         <i class="bi bi-pencil"></i> Modifier
                     </a>
-                    <a href="@Url.Action("Details", "DemandeReparation", new { id = item.Id })" class="btn btn-info btn-sm">
+                    <a href="@Url.Action("Details", "DemandeReparation", new { id = item.Id })" class="btn btn-info btn-sm" style="display: inline-block; margin-right: 5px;">
                         <i class="bi bi-eye"></i> Voir
                     </a>
-                    <a href="@Url.Action("Delete", "DemandeReparation", new { id = item.Id })" class="btn btn-danger btn-sm">
-                        <i class="bi bi-trash"></i> Supprimer
-                    </a>
+                   <form action="@Url.Action("Delete", "DemandeReparation", new { id = item.Id })" method="post" onsubmit="return confirm('Êtes-vous sûr de vouloir supprimer cette demande ?');" style="display: inline-block;">
+                        <button type="submit" class="btn btn-danger btn-sm">Supprimer</button>
+                   </form>
                 </td>
             </tr>
         }
