@@ -182,7 +182,6 @@ D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\Sy
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Drawing.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Drawing.Primitives.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Dynamic.Runtime.dll
-D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Formats.Asn1.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Globalization.Calendars.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Globalization.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Globalization.Extensions.dll
@@ -271,7 +270,6 @@ D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\Sy
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Security.SecureString.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.ServiceModel.Web.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.ServiceProcess.dll
-D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Text.Encoding.CodePages.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Text.Encoding.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Text.Encoding.Extensions.dll
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\refs\System.Text.Encodings.Web.dll
@@ -382,3 +380,11 @@ D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\obj\Debug\net6.0\FicheRe
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\obj\Debug\net6.0\FicheReparation.genruntimeconfig.cache
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\obj\Debug\net6.0\FicheReparation.csproj.AssemblyReference.cache
 D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\ref\FicheReparation.dll
+D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\BouncyCastle.Cryptography.dll
+D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\MailKit.dll
+D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\MimeKit.dll
+D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\System.Formats.Asn1.dll
+D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\System.Text.Encoding.CodePages.dll
+D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Security.Cryptography.Pkcs.dll
+D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation\bin\Debug\net6.0\runtimes\win\lib\net6.0\System.Text.Encoding.CodePages.dll

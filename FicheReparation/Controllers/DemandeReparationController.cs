@@ -11,15 +11,17 @@ namespace FicheReparation.Controllers
         private readonly IDemandeReparationRepository _demandeReparationRepository;
         private readonly IClientRepository _clientRepository; // Ajout d'une référence à un repository pour les clients
         private readonly PdfService _pdfService; //pdf
-       
+        private readonly IEmailService _emailService; //send email
+
 
         public ActionDescriptor ActionDescriptor { get; internal set; }
 
-        public DemandeReparationController(IDemandeReparationRepository demandeReparationRepository, IClientRepository clientRepository, PdfService pdfService)
+        public DemandeReparationController(IDemandeReparationRepository demandeReparationRepository, IClientRepository clientRepository, PdfService pdfService , IEmailService emailService)
         {
             _demandeReparationRepository = demandeReparationRepository;
             _clientRepository = clientRepository;
             _pdfService = pdfService;
+            _emailService = emailService;
         }
 
     
@@ -118,11 +120,27 @@ namespace FicheReparation.Controllers
 
             if (ModelState.IsValid)
             {
+                // Vérifier si l’état est "réparé"
+                if (demandeReparation.Etat.ToLower() == "réparé")
+                {
+                    // Récupérer l'email du client (à adapter selon votre modèle)
+                    var client = await _clientRepository.GetClientByIdAsync(demandeReparation.ClientId);
+                    if (client != null && !string.IsNullOrEmpty(client.Email))
+                    {
+                        string subject = "Votre appareil est réparé !";
+                        string body = $"<h1>Bonjour {client.Nom},</h1><p>Votre appareil <strong>{demandeReparation.Appareil}</strong> a été réparé avec succès. Vous pouvez venir le récupérer.</p>";
+
+                        await _emailService.SendEmailAsync(client.Email, subject, body);
+                    }
+                }
+
                 await _demandeReparationRepository.UpdateAsync(demandeReparation);
                 return RedirectToAction(nameof(Index));
             }
+
             return View(demandeReparation);
         }
+
 
 
         // POST: DemandeReparation/Delete/5
