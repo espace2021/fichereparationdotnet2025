@@ -6,17 +6,19 @@
 
 <h2>@ViewData["Title"]</h2>
 
-<a href="@Url.Action("Create", "DemandeReparation")" class="btn btn-primary mb-3">Ajouter une nouvelle demande</a>
+<a href="@Url.Action("Create", "DemandeReparation")" class="btn btn-primary mb-3">
+    <i class="bi bi-plus-circle"></i> Ajouter une nouvelle demande
+</a>
 
-<table class="table">
-    <thead>
+<table class="table table-striped">
+    <thead class="thead-dark">
         <tr>
-            <th>@Html.DisplayNameFor(model => model.DateDepotAppareil)</th>
-            <th>@Html.DisplayNameFor(model => model.Appareil)</th>
+            <th style="width: 12%;">@Html.DisplayNameFor(model => model.DateDepotAppareil)</th>
+            <th style="width: 15%;">@Html.DisplayNameFor(model => model.Appareil)</th>
             <th>@Html.DisplayNameFor(model => model.Etat)</th>
             <th>@Html.DisplayNameFor(model => model.SymptomesPanne)</th>
             <th>@Html.DisplayNameFor(model => model.Client)</th>
-            <th>Actions</th>
+            <th style="width: 25%;">Actions</th> <!-- Élargi -->
         </tr>
     </thead>
     <tbody>
@@ -25,15 +27,49 @@
             <tr>
                 <td>@item.DateDepotAppareil.ToString("d")</td>
                 <td>@item.Appareil</td>
-                <td>@item.Etat</td>
+                <td class="etat-cell" data-etat="@item.Etat">@item.Etat</td>
                 <td>@item.SymptomesPanne</td>
                 <td>@item.Client?.Nom</td>
                 <td>
-                    <a href="@Url.Action("Edit", "DemandeReparation", new { id = item.Id })" class="btn btn-warning btn-sm">Modifier</a>
-                    <a href="@Url.Action("Details", "DemandeReparation", new { id = item.Id })" class="btn btn-info btn-sm">Voir</a>
-                    <a href="@Url.Action("Delete", "DemandeReparation", new { id = item.Id })" class="btn btn-danger btn-sm">Supprimer</a>
+                    <a href="@Url.Action("Edit", "DemandeReparation", new { id = item.Id })" class="btn btn-warning btn-sm">
+                        <i class="bi bi-pencil"></i> Modifier
+                    </a>
+                    <a href="@Url.Action("Details", "DemandeReparation", new { id = item.Id })" class="btn btn-info btn-sm">
+                        <i class="bi bi-eye"></i> Voir
+                    </a>
+                    <a href="@Url.Action("Delete", "DemandeReparation", new { id = item.Id })" class="btn btn-danger btn-sm">
+                        <i class="bi bi-trash"></i> Supprimer
+                    </a>
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+@section Scripts {
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelectorAll(".etat-cell").forEach(function (cell) {
+                var etat = cell.getAttribute("data-etat");
+                switch (etat) {
+                    case "Arrivé":
+                        cell.style.backgroundColor = "lightgray";
+                        cell.style.color = "black";
+                        break;
+                    case "En cours":
+                        cell.style.backgroundColor = "orange";
+                        cell.style.color = "white";
+                        break;
+                    case "Réparé":
+                        cell.style.backgroundColor = "green";
+                        cell.style.color = "white";
+                        break;
+                    case "Irréparable":
+                        cell.style.backgroundColor = "red";
+                        cell.style.color = "white";
+                        break;
+                }
+            });
+        });
+    </script>
+}

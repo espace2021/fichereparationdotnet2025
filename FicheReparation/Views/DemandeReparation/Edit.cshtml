@@ -1,0 +1,52 @@
+﻿@model FicheReparation.Models.DemandeReparation
+
+@{
+    ViewData["Title"] = "Modification Demande de réparation";
+}
+
+<h1>@ViewData["Title"]</h1>
+
+<hr>
+
+<!-- Formulaire de modification d'une demande de réparation -->
+<form asp-action="Edit" method="post">
+
+<h3>@Model.Appareil</h3>
+<input type="hidden" asp-for="Appareil" />
+
+<h4> Client : @Model.Client.Nom</h4>
+<h6> Tél : @Model.Client.NumTel </h6>
+<input type="hidden" asp-for="ClientId"  />
+
+
+    <div class="form-group">
+        <label for="DateDepotAppareil">Date de dépôt de l'appareil</label>
+        <input type="date" asp-for="DateDepotAppareil" class="form-control" />
+        <span asp-validation-for="DateDepotAppareil" class="text-danger"></span>
+    </div>
+
+
+    <div class="form-group">
+        <label for="Etat">État de l'appareil</label>
+         <select asp-for="Etat" class="form-control">
+             <option value="@Model.Etat">@Model.Etat</option>
+             <option value="En cours">En Cours</option>
+             <option value="Réparé">Réparé</option>
+             <option value="Irréparable">Irréparable</option>
+          </select>
+    </div>
+
+    <div class="form-group">
+        <label for="SymptomesPanne">Symptômes de la panne</label>
+        <textarea asp-for="SymptomesPanne" class="form-control" maxlength="255"></textarea>
+        <span asp-validation-for="SymptomesPanne" class="text-danger"></span>
+    </div>
+
+     <button type="submit" class="btn btn-primary">Enregistrer</button>
+     <a asp-action="Index" class="btn btn-secondary">Annuler</a>
+</form>
+
+<!-- Validation client-side -->
+@section Scripts {
+    @{ await Html.RenderPartialAsync("_ValidationScriptsPartial"); }
+}

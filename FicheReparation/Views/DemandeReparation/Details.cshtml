@@ -1,0 +1,23 @@
+﻿@model FicheReparation.Models.DemandeReparation
+
+@{
+    ViewData["Title"] = "Détail de la demande de réparation";
+}
+
+<h2 class="text-center mt-3">Détail Réparation</h2>
+
+<div class="card shadow-sm p-4">
+    <div class="card-body">
+        <h4 class="card-title">@Model.Appareil</h4>
+        <hr />
+
+        <p><strong>Etat :</strong> @Model.Etat</p>
+        <p><strong>Panne :</strong> @Model.SymptomesPanne</p>
+        <p><strong>Date Dépôt :</strong> @Model.DateDepotAppareil</p>
+         <p><strong>Client :</strong> @Model.Client.Nom</p>
+
+        <div class="mt-4">
+            <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Modifier</a>
+        </div>
+    </div>
+</div>

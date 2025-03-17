@@ -124,6 +124,7 @@ namespace FicheReparation.Controllers
             return View(demandeReparation);
         }
 
+
         // GET: DemandeReparation/Delete/5
         public async Task<IActionResult> Delete(int id)
         {
