@@ -25,7 +25,7 @@ builder.Services.AddScoped<IEmailService, EmailService>();
 builder.Services.AddHttpClient();
 
 
-// Add services to the container.
+// Récupère la chaîne de connexion définie dans le fichier appsettings.json.
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 

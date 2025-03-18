@@ -54,7 +54,21 @@ namespace FicheReparation.Controllers
 
         private async Task<IntentAnalysisResult> AnalyzeIntent(string userQuestion)
         {
-            var prompt = $"Tu es un assistant qui génère des requêtes SQL Server valides pour répondre à cette question : {userQuestion}";
+            var prompt = $@"
+        Tu es un assistant spécialisé en bases de données SQL Server. 
+        Génère une requête SQL Server valide et optimisée pour répondre à la question suivante :
+        '{userQuestion}'
+        
+        - Assure-toi que la syntaxe est correcte et compatible avec SQL Server.
+        - Utilise des alias explicites pour améliorer la lisibilité si nécessaire.
+        - Évite les requêtes dangereuses comme DROP, DELETE sans condition, ou toute modification irréversible des données.
+        - Si la question manque de précision, propose une requête générique en supposant des noms de tables courants.
+        - Les noms des tables en Français
+        - Les noms des champs en un mot en Français
+        - Retourne uniquement la requête SQL, sans explication supplémentaire.
+        - La requête se termine toujours par un point virgule
+    ";
+
             var llamaResponse = await CallLlama(prompt);
 
             Console.WriteLine($"Réponse brute de Llama : {llamaResponse}");
