@@ -21,6 +21,10 @@ builder.Services.AddSingleton<PdfService>();
 //Email service
 builder.Services.AddScoped<IEmailService, EmailService>();
 
+//le service HttpClient
+builder.Services.AddHttpClient();
+
+
 // Add services to the container.
 builder.Services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 

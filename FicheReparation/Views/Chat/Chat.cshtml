@@ -1,0 +1,20 @@
+﻿@model FicheReparation.Models.ChatViewModel
+
+@{
+    ViewData["Title"] = "ChatBot";
+}
+
+<h2>@ViewData["Title"]</h2>
+
+<h3>Posez une question</h3>
+
+<form asp-action="PoserQuestion" method="post">
+    <input type="text" asp-for="UserQuestion" placeholder="Votre question..." required class="form-control" />
+    <button type="submit" class="btn btn-primary">Envoyer</button>
+</form>
+
+@if (ViewData["ResponseMessage"] != null)
+{
+    <h3>Réponse :</h3>
+    <p>@Html.Raw(ViewData["ResponseMessage"])</p>
+}

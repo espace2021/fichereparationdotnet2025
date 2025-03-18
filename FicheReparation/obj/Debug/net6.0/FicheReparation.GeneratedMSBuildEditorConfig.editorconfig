@@ -15,6 +15,10 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = D:\Sandra\DotNet\Projet\FicheReparation\FicheReparation
 build_property._RazorSourceGeneratorDebug = 
 
+[D:/Sandra/DotNet/Projet/FicheReparation/FicheReparation/Views/Chat/Chat.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2hhdFxDaGF0LmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/Sandra/DotNet/Projet/FicheReparation/FicheReparation/Views/Client/Create.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2xpZW50XENyZWF0ZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
