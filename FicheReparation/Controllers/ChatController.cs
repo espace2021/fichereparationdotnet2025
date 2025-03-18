@@ -102,9 +102,18 @@ namespace FicheReparation.Controllers
                     // Afficher la requête
                     Console.WriteLine("Première occurrence de la requête SQL :");
                     Console.WriteLine(sqlQuery);
-                         
-                    result.Table = "clients";
+
                     result.Query = sqlQuery;
+
+                    // Extraire la chaîne ayant le nom de la table
+                    string sqlTable = ExtractSqlTable(responseText);
+
+                    // Afficher la requête
+                    Console.WriteLine("Le nom de la table :");
+                    Console.WriteLine(sqlTable);
+
+                    result.Table = sqlTable;
+                    
                 }
                 else
                 {
@@ -141,6 +150,20 @@ namespace FicheReparation.Controllers
             return null;
         }
 
+        // Fonction pour extraire le nom de la table
+        public static string ExtractSqlTable(string text)
+        {
+            // Regex pour capturer le nom de la table après FROM
+            Match match = Regex.Match(text, @"\bFROM\s+([\w\d_]+)", RegexOptions.IgnoreCase);
+
+            if (match.Success)
+            {
+                return match.Groups[1].Value;
+            }
+
+            // Si le nom de la table n'est pas trouvé, retourner null
+            return null;
+        }
 
         private string GenerateResponse(List<Dictionary<string, object>> data)
         {
