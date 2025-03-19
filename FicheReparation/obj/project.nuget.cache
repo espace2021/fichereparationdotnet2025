@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "+X8h3H1hY+B+rgALTEzGGuUmdgXmeYML6Ijg4+yH49xllPxgRPDQL9KPD7cYbu64PBgbYSQHq897jSIG68QnTg==",
+  "dgSpecHash": "V8DfnTikKrwu9bMBgNyi/zw9MKlEQ/GGrtv0c39lH64hS94MdEHXQVS3HoFXRnFli+OakfYeVKZCZjgGUH+mjg==",
   "success": true,
   "projectFilePath": "D:\\Sandra\\DotNet\\Projet\\FicheReparation\\FicheReparation\\FicheReparation.csproj",
   "expectedPackageFiles": [
@@ -95,6 +95,7 @@
     "C:\\Users\\user\\.nuget\\packages\\system.io.filesystem\\4.0.1\\system.io.filesystem.4.0.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.io.filesystem.primitives\\4.0.1\\system.io.filesystem.primitives.4.0.1.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.linq\\4.1.0\\system.linq.4.1.0.nupkg.sha512",
+    "C:\\Users\\user\\.nuget\\packages\\system.linq.dynamic.core\\1.6.0.2\\system.linq.dynamic.core.1.6.0.2.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.linq.expressions\\4.1.0\\system.linq.expressions.4.1.0.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.memory\\4.5.3\\system.memory.4.5.3.nupkg.sha512",
     "C:\\Users\\user\\.nuget\\packages\\system.net.http\\4.1.0\\system.net.http.4.1.0.nupkg.sha512",

@@ -14,7 +14,7 @@ namespace FicheReparation.Helpers
         }
         public async Task<List<Dictionary<string, object>>> ExecuteSqlQuery(IntentAnalysisResult analysis)
         {
-           
+          
             if (string.IsNullOrEmpty(analysis?.Table) || string.IsNullOrEmpty(analysis?.Query))
                 return new List<Dictionary<string, object>>();
 

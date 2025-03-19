@@ -1,13 +1,15 @@
 ﻿using FicheReparation.Data;
 using FicheReparation.Models;
 using Microsoft.EntityFrameworkCore;
+using System.Linq.Dynamic.Core;
+using System.Linq.Dynamic.Core.Exceptions;
 
 namespace FicheReparation.Entity
 {
     public class ClientRepository : IClientRepository
     {
         private readonly ApplicationDbContext _context;
-
+    
         public ClientRepository(ApplicationDbContext context)
         {
             _context = context;
@@ -44,6 +46,8 @@ namespace FicheReparation.Entity
                 await _context.SaveChangesAsync();
             }
         }
+     
+
     }
 
 }

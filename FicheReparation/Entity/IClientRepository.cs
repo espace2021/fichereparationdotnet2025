@@ -1,5 +1,6 @@
 ﻿using FicheReparation.Models;
 
+
 namespace FicheReparation.Entity
 {
     public interface IClientRepository
