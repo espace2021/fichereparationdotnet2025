@@ -65,8 +65,14 @@ namespace FicheReparation.Controllers
         - Si la question manque de précision, propose une requête générique en supposant des noms de tables courants.
         - Les noms des tables en Français
         - Les noms des champs en un mot en Français
+        - le nom des tables sont demandeReparations et clients.
+        - Évite les requêtes dangereuses comme la suppression ou la modification massive des données.
+        - Les noms des champs doivent être en un seul mot en français.
+        - Les champs de cleints sont : Id Nom Adresse NumTel Email.
+        - Les champs de demandReparations sont : Id Appareil DateDepotAppareil Etat SymptomesPanne ClientId.
+        - Le champ ClientId est une clé étrangère qui fait référence à Id de la table clients sert à afficher le nom.
         - Retourne uniquement la requête SQL, sans explication supplémentaire.
-        - La requête se termine toujours par un point virgule
+        - La requête se termine toujours par un point virgule.
     ";
 
             var llamaResponse = await CallLlama(prompt);

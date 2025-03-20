@@ -1,8 +1,6 @@
 ﻿using FicheReparation.Data;
 using FicheReparation.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Linq.Dynamic.Core;
-using System.Linq.Dynamic.Core.Exceptions;
 
 namespace FicheReparation.Entity
 {

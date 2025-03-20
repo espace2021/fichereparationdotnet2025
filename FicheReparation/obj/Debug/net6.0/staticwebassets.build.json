@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "hzjPGxRwzhqVycZY4GVgcyTCR/VX4uni+u7P5wCK0xA=",
+  "Hash": "P0u1xMgzP6huKmneZo+AeC0Bcz2fr0MOR3b18gkHAUo=",
   "Source": "FicheReparation",
   "BasePath": "_content/FicheReparation",
   "Mode": "Default",
@@ -83,6 +83,23 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\favicon.ico"
+    },
+    {
+      "Identity": "D:\\Sandra\\DotNet\\Projet\\FicheReparation\\FicheReparation\\wwwroot\\images\\chatbot.webp",
+      "SourceId": "FicheReparation",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\Sandra\\DotNet\\Projet\\FicheReparation\\FicheReparation\\wwwroot\\",
+      "BasePath": "_content/FicheReparation",
+      "RelativePath": "images/chatbot.webp",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\images\\chatbot.webp"
     },
     {
       "Identity": "D:\\Sandra\\DotNet\\Projet\\FicheReparation\\FicheReparation\\wwwroot\\js\\site.js",

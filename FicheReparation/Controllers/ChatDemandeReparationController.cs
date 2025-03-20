@@ -5,36 +5,32 @@ using System.Text;
 using Newtonsoft.Json;
 
 
-
 namespace FicheReparation.Controllers
 {
-    public class ChatClientController : Controller
+    public class ChatDemandeReparationController : Controller
     {
-
         private readonly ChatService _chatService;
         private readonly HttpClient _httpClient;
+   
 
-       
-
-        public ChatClientController(IConfiguration configuration, HttpClient httpClient)
+        public ChatDemandeReparationController(IConfiguration configuration, HttpClient httpClient)
         {
             // Injecter IConfiguration dans le constructeur du contrôleur
             _chatService = new ChatService(configuration);  // Passer IConfiguration à ChatService
             // http
             _httpClient = httpClient;
-           
-        } 
+        }
 
-        [Route("chat/client")]
+        [Route("chat/demandeReparation")]
         // Cette méthode sert à afficher le formulaire de question
         [HttpGet]
         public IActionResult Chat()
         {
-            return View(); // Cela rendra la vue "ChatClient.cshtml"
+            return View(); 
         }
 
         [HttpPost]
-        public async Task<IActionResult> Questionner(string userQuestion)
+        public async Task<IActionResult> Interroger(string userQuestion)
         {
             if (string.IsNullOrEmpty(userQuestion))
             {
@@ -48,11 +44,9 @@ namespace FicheReparation.Controllers
 
             var analysis = new IntentAnalysisResult();
             analysis.Query = query;
-            analysis.Table = "clients";
+            analysis.Table = "demandeReparations";
 
             var data = await _chatService.ExecuteSqlQuery(analysis);
-
-            Console.WriteLine($"clients : {data}");
 
             ViewData["ResponseMessage"] = GenerateResponse(data);
 
@@ -68,10 +62,11 @@ namespace FicheReparation.Controllers
         - Assure-toi que la syntaxe est correcte et compatible avec SQL Server.
         - Si la question manque de précision, propose une requête qui retourne tous les clients.
         - Utilise des alias explicites pour améliorer la lisibilité si nécessaire.
-        - le nom de la table est clients
+        - le nom de la table est demandeReparations
         - Évite les requêtes dangereuses comme la suppression ou la modification massive des données.
-        - Les noms des champs doivent être en un seul mot et en Français.
-        - Les champs sont : Id Nom Adresse NumTel Email
+        - Les noms des champs doivent être en un seul mot en français.
+        - Les champs sont : Id Appareil DateDepotAppareil Etat SymptomesPanne ClientId.
+        - Le champ ClientId est une clé étrangère qui fait référence à Id de la table clients sert à afficher le nom.
         - Retourne uniquement la requête SQL, sans explication supplémentaire ni commentaire.
         - La requête se termine toujours par un point virgule.
         ";
@@ -83,33 +78,33 @@ namespace FicheReparation.Controllers
 
             try
             {
-                
 
-                    // Désérialiser la réponse JSON
-                    dynamic responseObject = JsonConvert.DeserializeObject(llamaResponse);
 
-                    // Extraire la chaîne contenant la requête 
-                    responseText = responseObject.response;
+                // Désérialiser la réponse JSON
+                dynamic responseObject = JsonConvert.DeserializeObject(llamaResponse);
 
-                    // Afficher la requête
-                    Console.WriteLine("La requête SQL :");
-                    Console.WriteLine(responseText);
+                // Extraire la chaîne contenant la requête 
+                responseText = responseObject.response;
 
-                 
+                // Afficher la requête
+                Console.WriteLine("La requête SQL :");
+                Console.WriteLine(responseText);
 
-               
+
+
+
             }
             catch (Exception ex)
             {
                 Console.WriteLine($"Erreur lors de l'analyse de la réponse : {ex.Message}");
-               
+
             }
 
             return responseText;
         }
 
 
-         public async Task<string> CallLlama(string prompt)
+        public async Task<string> CallLlama(string prompt)
         {
             // Inclure le modèle "llama3" dans la requête
             var requestContent = new OllamaRequest
@@ -151,7 +146,6 @@ namespace FicheReparation.Controllers
 
             return response;
         }
-
 
     }
 }
