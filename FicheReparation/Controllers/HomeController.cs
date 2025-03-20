@@ -1,9 +1,11 @@
 ﻿using FicheReparation.Models;
+
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace FicheReparation.Controllers
 {
+    
     public class HomeController : Controller
     {
         private readonly ILogger<HomeController> _logger;
@@ -12,7 +14,7 @@ namespace FicheReparation.Controllers
         {
             _logger = logger;
         }
-
+       
         public IActionResult Index()
         {
             return View();

@@ -1,9 +1,11 @@
-﻿using FicheReparation.Models;
+﻿﻿using FicheReparation.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
 
 namespace FicheReparation.Data
 {
-    public class ApplicationDbContext : DbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options) { }
@@ -12,3 +14,5 @@ namespace FicheReparation.Data
         public DbSet<DemandeReparation> DemandeReparations { get; set; }
     }
 }
+
+
