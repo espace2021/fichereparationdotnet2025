@@ -40,7 +40,6 @@ builder.Services.AddIdentity<IdentityUser, IdentityRole>(options => {
     .AddDefaultTokenProviders()
     .AddDefaultUI(); // Ajoute les pages Razor d'Identity par défaut
 
-
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -59,17 +58,14 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();  // À placer AVANT UseAuthorization
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 
-app.UseAuthentication();  // À placer AVANT UseAuthorization
-app.UseAuthorization();
-
 app.MapRazorPages(); // Ajoute cette ligne pour utiliser Identity UI
-
 
 
 app.Run();

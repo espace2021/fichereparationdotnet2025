@@ -1,5 +1,5 @@
 ﻿using FicheReparation.Models;
-
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -14,7 +14,7 @@ namespace FicheReparation.Controllers
         {
             _logger = logger;
         }
-       
+       // [Authorize]
         public IActionResult Index()
         {
             return View();
